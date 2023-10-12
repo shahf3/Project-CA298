@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+{{book.title}} by {{book.author}}
+{% endblock %}
+
+{% block content %}
+<div>
+
+    <div class="row  p-2">
+        <!-- pull book image from openlibrary  -->
+        <img class="col-4 shadow rounded p-2" src="https://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" />
+        <ul class="pl-4 col-4 list-group">
+
+            <h5 class="text-muted">Title</h5>
+            <li class="list-group-item lead mb-2">{{book.title}} </li>
+
+            <h5 class="text-muted">Author</h5>
+            <li class="list-group-item mb-2">{{book.author}} </li>
+
+            <h5 class="text-muted">Genre</h5>
+            <li class="list-group-item mb-2">{{book.genre}} </li>
+
+            <h5 class="text-muted">Release Year</h5>
+            <li class="list-group-item mb-2">{{book.release_year}} </li>
+
+            <h5 class="text-muted">ID</h5>
+            <li class="list-group-item mb-2">{{book.id}} </li>
+
+            <h5 class="text-muted">ISBN</h5>
+            <li class="list-group-item mb-2">{{book.isbn}} </li>
+
+            <h5 class="text-muted">Stock</h5>
+            <li class="list-group-item mb-2">{{book.stock}} </li>
+
+        </ul>
+
+
+        <div class="pl-4 col-4">
+            {% if borrows %}
+            <ul class="list-group mb-2">
+                <h5 class="text-muted">Currently Borrowing</h5>
+                {% for borrow in borrows %}
+                <li class="list-group-item">
+                    <a href="/customers/{{borrow.customer.id}}">{{borrow.customer.name}}</a>
+                    <p>{{borrow.due_date}}</p>
+                    {% if borrow.due_date < current_date %} <span class="text-white badge bg-danger">Due</span>
+                        {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h5 class="text-muted mb-4">This book is not currently being borrowed.</h5>
+            {% endif %}
+            {% if returned %}
+            <ul class="list-group mb-2">
+                <h5 class="text-muted">Returned</h5>
+                {% for borrow in returned %}
+                <li class="list-group-item">
+                    <a href="/customers/{{borrow.customer.id}}">{{borrow.customer.name}} </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h5 class="text-muted mb-4">There are no returns on record for this book.</h5>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

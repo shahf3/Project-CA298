@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>QUESTION3</title>
+  </head>
+  <body>
+    <form id="my-form">
+      <label for="name-input">Enter your name:</label>
+      <input type="text" id="name-input" name="name">
+      <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+      // select the form element using its ID
+      const myForm = document.getElementById('my-form');
+      
+      // add a submit event listener to the form
+      myForm.addEventListener('submit', (event) => {
+        // prevent the default form submission behavior
+        event.preventDefault();
+        
+        // select the name input element using its ID
+        const nameInput = document.getElementById('name-input');
+        
+        // get the value of the name input element
+        const name = nameInput.value.trim();
+        
+        // check if the name input is blank
+        if (name === '') {
+          // present an alert to the user
+          alert('Please enter your name.');
+        } else {
+          // create a new paragraph element
+          const greeting = document.createElement('p');
+          
+          // set the text content of the paragraph element
+          greeting.textContent = `Hello ${name}`;
+          
+          // append the paragraph element to the body of the page
+          document.body.appendChild(greeting);
+        }
+      });
+    </script>
+  </body>
+</html>

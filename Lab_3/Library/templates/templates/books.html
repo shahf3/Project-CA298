@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+  	<!-- the page title goes here --> 
+{% endblock %}
+
+{% block content %}
+  	<!-- content specific to this page goes here -->
+  	<div class="container p-2">
+		<h1>Books</h1>
+		<div class="row col-12">
+		{% for b in books %}
+			<div class="col-md-6">
+				<div class="card my-3">
+					<div class="card-title bg-primary-subtle rounded p-2 m-2" style="margin-right: 0%;">
+						<h3>
+							{{ b.title }}
+							<a href="{% url 'single_book' b.id %}" class="btn btn-sm btn-primary"><i class="fas fa-link"></i>Click here to view book</a>
+						</h3>
+					</div>
+					<div class="card-body">
+						<!--  -->
+						<a href="{% url 'books/author' b.author %}">
+							<p><b>Author:</b> {{ b.author }}</p>
+						</a>
+						<a href="{% url 'books/genre' b.genre %}">
+							<p><b>Genre:</b> {{ b.genre }}</p>
+						</a>
+						<p><b>Price:</b> {{ b.price }}</p>
+						<!--  -->
+						<div class="row">
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+
+		<b>{{ books|length }} books found.</b>
+	</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="pizza-container">
+    <h1>Here is your Final Order</h1>
+    <p>Size: {{ pizza.size }}</p>
+    <p>Cheese: {{ pizza.cheese }}</p>
+    <p>Sauce: {{ pizza.sauce }}</p>
+    <p>Toppings</p>
+    <ul>
+        {% for topping in pizza.toppings.all %}
+            <li>{{ topping.name }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+<style>
+    body {
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #525151;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+
+    .nav-container {
+        background-color: #000000;
+        padding: 20px;
+        border: 50px solid #312e2e;
+        border-radius: 2px;
+        font-size: 23px;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        color: #4b3333;
+        text-decoration: none;
+        font-size: 05px;
+    }
+
+    nav ul li a:hover {
+        color: #fff;
+    }
+
+
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+</style>
+

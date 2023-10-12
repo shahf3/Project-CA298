@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Question2</title>
+  </head>
+  <body>
+    <p id="my-paragraph">Original text</p>
+    <button id="my-button">Change color</button>
+    
+    <script>
+      // select the paragraph element using its ID
+      const myParagraph = document.getElementById('my-paragraph');
+      
+      // select the button element using its ID
+      const myButton = document.getElementById('my-button');
+      
+      // add a click event listener to the button
+      myButton.addEventListener('click', () => {
+        // change the color of the paragraph element to red
+        myParagraph.style.color = 'red';
+      });
+    </script>
+  </body>
+</html>

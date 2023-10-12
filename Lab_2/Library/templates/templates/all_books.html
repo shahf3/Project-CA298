@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+  <!-- the page title goes here -->  
+{% endblock %}
+
+{% block content %}
+{% for b in books %}
+<p> {{ b.title }} </p>
+<p> {{b.author }} <p>
+  <!-- content specific to this page goes here --> 
+{% endfor %}
+{% endblock %}

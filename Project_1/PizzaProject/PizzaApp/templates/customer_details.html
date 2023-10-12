@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <h1>Give Your Details</h1>
+    <style>
+        label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+        font-weight: bold;
+      }
+        h1 {
+        text-align: center;
+        color: #fff9f9;
+      }
+        form {
+        max-width: 500px;
+        margin: 10 auto;
+        padding: 20px;
+        background-color: #0000004d;
+        box-shadow: 0 0 10px rgba(214, 142, 142, 0.467);
+        border-radius: 5px;
+      }
+        body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #fffbfb;
+		}
+        .order-form {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+    
+        .order-form input[type="text"],
+        .order-form input[type="email"],
+        .order-form input[type="tel"] {
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 5px solid #8b7676;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+    
+        .order-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #db0000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        .order-form button:hover {
+            background-color: #3a3737;
+        }
+    </style>
+    
+    <form action="" method="POST" class="order-form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Proceed To Payment</button>
+    </form>
+{% endblock %}
+

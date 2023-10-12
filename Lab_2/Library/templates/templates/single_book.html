@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h3>{{ book.title }}</h3>
+<!-- the page title goes here --> 
+{% endblock%}
+
+{% block content %}
+  <!-- content specific to this page goes here --> 
+    <p><b>Author: </b>b>{{book.author}}<p>
+    <p><b>Year: </b>{{book.year}}<p>
+    <p><b>Synopsis: </b>{{book.synopsis}}</p>
+{% endblock %}

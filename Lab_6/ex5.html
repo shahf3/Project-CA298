@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Star Wars</title>
+  </head>
+  <body>
+    <h1>Planet Information: Tattoine</h1>
+    <ul>
+      <li><strong>Name:</strong> <span id="name"></span></li>
+      <li><strong>Diameter:</strong> <span id="diameter"></span></li>
+      <li><strong>Climate:</strong> <span id="climate"></span></li>
+      <li><strong>Terrain:</strong> <span id="terrain"></span></li>
+      <li><strong>Population:</strong> <span id="population"></span></li>
+    </ul>
+    
+    <script>
+      // Fetch data from the API
+      fetch('https://swapi.dev/api/planets/1/')
+        .then(response => response.json())
+        .then(data => {
+          // Display the data in the HTML
+          document.getElementById('name').textContent = data.name;
+          document.getElementById('diameter').textContent = data.diameter;
+          document.getElementById('climate').textContent = data.climate;
+          document.getElementById('terrain').textContent = data.terrain;
+          document.getElementById('population').textContent = data.population;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    </script>
+  </body>
+</html>

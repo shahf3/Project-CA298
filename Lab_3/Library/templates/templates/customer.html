@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12 mt-1 mb-4">
+        <h3>
+            Customer {{customer.name}}
+    </div>
+    <div class="col-6">
+        {% if borrowed %}
+        <ul class="list-group mb-2">
+            <h5>Currently Borrowing</h5>
+            {% for borrow in borrowed %}
+            <li class="list-group-item">
+                <a href="/books/{{borrow.book.id}}">{{borrow.book.title}} </a>
+                <p>{{borrow.due_date}}.</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h5>No books are being borrowed.</h5>
+        {% endif %}
+    </div>
+    <div class="col-6">
+        {% if returned %}
+        <ul class="list-group mb-2">
+            <h5>Previously Borrowed</h5>
+            {% for borrow in returned %}
+            <li class="list-group-item">
+                <a href="/books/{{borrow.book.id}}">{{borrow.book.title}} </a>
+                <p>Returned by {{borrow.due_date}}.</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h5>No past returns</h5>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
+

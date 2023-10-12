@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="d-flex flex-wrap-reverse">
+    <div class="mr-2 mb-2">
+        <a class="btn btn-sm btn-outline-dark" href="/" role="button">All</a>
+    </div>
+    {% for genre in genres %}
+    <div class="mr-2 mb-2">
+        <a class="btn btn-sm btn-outline-dark" href="/books/{{genre}}" role="button">{{genre}}</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="row p-2 g-4">
+    {% for book in books %}
+    <div class="col-2 p-2 text-center">
+        <div class="rounded shadow-sm border p-1 d-flex flex-column justify-content-between h-100">
+            <!-- pull book image from openlibrary  -->
+            <img class="shadow mb-1" src="https://covers.openlibrary.org/b/isbn/{{book.isbn}}-M.jpg"
+                style=" width: 100%; max-height: 250px; object-fit: cover; object-position: bottom;" />
+            <!-- 'body' of the card -->
+            <div>
+                <h5 class="card-title">{{book.title}}</h5>
+
+                <p>by {{book.author}}</p>
+                <p class="text-muted">{{book.genre}}</p>
+                <a class="btn btn-dark mb-2" href="/books/view/{{book.id}}" role="button">More Info</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

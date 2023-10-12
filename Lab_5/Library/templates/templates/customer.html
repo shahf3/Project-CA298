@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+{{customer.name}} (ID={{customer.id}})
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-12 mt-1 mb-4">
+        <h3>
+            Information for customer {{customer.name}} (ID = {{customer.id}})
+        </h3>
+    </div>
+
+    <div class="col-6">
+        {% if borrows %}
+        <ul class="list-group mb-2">
+            <h5 class="text-muted">Currently Borrowing</h5>
+            {% for borrow in borrows %}
+            <li class="list-group-item">
+                <a href="/books/view/{{borrow.book.id}}">{{borrow.book.title}} </a>
+                <p>{{borrow.due_date}}.</p>
+                {% if borrow.due_date < current_date %} <span class="text-white badge bg-danger">Due</span>
+                    {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% else %}
+        <h5 class="text-muted mb-4">This customer is not currently borrowing any books.</h5>
+        {% endif %}
+    </div>
+
+    <div class="col-6">
+        {% if returned %}
+        <ul class="list-group mb-2">
+            <h5 class="text-muted">Previously Borrowed</h5>
+            {% for borrow in returned %}
+            <li class="list-group-item">
+                <a href="/books/view/{{borrow.book.id}}">{{borrow.book.title}} </a>
+                <p>Returned by {{borrow.due_date}}.</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h5 class="text-muted mb-4">This customer has no previously returned books.</h5>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+  <!-- the page title goes here --> 
+{% endblock %}
+
+{% block content %}
+    <div class="card p-2 m-2">
+        <h3>{{book.title}}</h3>
+        <p><b>Author: </b>{{book.author}}</p>
+        <p><b>Genre: </b>{{book.genre}}</p>
+        <p><b>Year of Release: </b>{{book.year}}</p>
+        <p><b>Inventory: </b>{{book.inventory}}</p>
+<div class="pl-4 col-4">
+  {% if borrowed %}
+  <ul class="list-group mb-2">
+      <h5>Currently Borrowing</h5>
+      {% for borrow in borrowed %}
+      <li class="list-group-item">
+          <a href="/customer/{{borrow.customer.id}}">{{borrow.customer.name}}</a>
+          <p>{{borrow.due_date}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+</div>
+  <!-- content specific to this page goes here --> 
+{% endblock %}
